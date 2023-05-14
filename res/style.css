@@ -1,0 +1,78 @@
+/* Main Site Theme*/
+
+/* Import Fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+html {
+    font-family: 'Trebuchet MS', Roboto, Arial, sans-serif;
+    /* max-width: 100%; */
+    overflow-x: hidden;
+}
+
+header {
+    background-color: black;
+    color: white;
+    padding: 1em;
+    padding-top: 1.5em;
+    margin-left: -3em;
+    margin-right: -3em;
+    margin-top: -1em;
+}
+
+body {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 0.5em;
+}
+.center {
+    margin: auto;
+    display: block;
+    width: 90%;
+}
+
+.tooltip {  /* tooltip box */
+    position: absolute;
+    padding: 7px;
+    font-size: 0.9em;
+    pointer-events: none;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -moz-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+button { /* reset zoom button */
+    background-color: white;
+    border: 2px solid red;
+    border-radius: 4px;
+    color: black;
+    padding: 0.3em 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 10px 3px;
+    cursor: pointer;
+}
+
+#year_select {  /* years drop down menu */
+    font-size: 1em;
+    background-color: white;
+    border: 2px solid red;
+    border-radius: 4px;
+    color: black;
+    padding: 0.25em 1em;
+}
+
+.map-legend { /* legend styling */
+    text-align: right;
+    float: right;
+}
+
+.buttons { /* years and reset button positioning  */
+    text-align: left;
+}
+
+
