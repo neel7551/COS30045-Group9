@@ -1,14 +1,12 @@
 function init() {
-    document.getElementById("year_select").value = __counter__;
-    geomap("data/" + __counter__ + ".csv");
+    document.getElementById("year_select").value = _year_;
+    geomap("data/" + _year_ + ".csv");
 }
 
 function geomap(migrationPopulation) {
-    
+
     var w = 1000;
     var h = 800;
-    var w1 = 100;
-    var h1 = 100;
 
     var projection = d3.geoMercator()
         .center([100, 5])
@@ -84,7 +82,7 @@ function geomap(migrationPopulation) {
             .attr("y", 246)
             .attr("id","undefined")
             .attr("font-weight", "normal")
-            .text("Undefined");
+            .text("No Data Recorded");
 
         legend.append("rect")
             .attr("x", 769.5)
@@ -126,6 +124,7 @@ function geomap(migrationPopulation) {
                 .attr("stroke-width", 0.25)
                 .attr("stroke", "black")
                 .attr("d", path)
+                .style("opacity", 0.75)
                 .on("mouseover", function (event, d) // Add 'd' as a parameter to the function
                 { 
                     tooltip.transition()
@@ -145,13 +144,29 @@ function geomap(migrationPopulation) {
                         }
                     })
                     .style("left", (event.pageX + 15) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+                    .style("top", (event.pageY - 28) + "px")
+                   
+                    //hover opacity and red outline
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .style("stroke", "red")
+                        .attr("stroke-width", 1.5)
+                        .style("opacity", 1);
                 })
                 .on("mouseout", function (d) 
                 {
                     tooltip.transition()
                         .duration(250)
-                        .style("opacity", 0);
+                        .style("opacity", 0)
+                        
+                    //unhover return to normal state
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .style("stroke", "black")
+                        .attr("stroke-width", 0.25)
+                        .style("opacity", 0.75);
                 })
                 .style("fill", function (d) 
                 {
@@ -170,53 +185,27 @@ function geomap(migrationPopulation) {
                     .duration(750)
                     .call(zoom.transform, d3.zoomIdentity);
             });
+            $("#lessZoom").click(() => 
+            {
+                zoom.scaleBy(svg.transition().duration(750), 0.8);
+            });
+            $("#moreZoom").click(() => 
+            {
+                zoom.scaleBy(svg.transition().duration(750), 1.2);
+            });
         })
     })
 };
 
 function UpdateMap() {
-
-    d3.select("svg").remove();
-    __counter__ = document.getElementById("year_select").value
-    geomap("data/" + __counter__ + ".csv");
-
+    d3.select("svg")
+        .remove();
+        _year_ = document.getElementById("year_select").value
+        geomap("data/" + _year_ + ".csv");
 }
 
-function UpdateMap() {
-
-    d3.select("svg").remove();
-    __counter__ = document.getElementById("year_select").value
-    geomap("data/" + __counter__ + ".csv");
-
-};
-
-__counter__ = 2016;
+_year_ = 2017;
 
 window.onload = init;
 
-// Legacy Functions
 
-function ChangePrev() {
-    __counter__ -= 1;
-    if (__counter__ == 2011) {
-        __counter__ += 1;
-        alert("Minimum dataset is 2011");
-    } else {
-        d3.select("svg").remove();
-        document.getElementById('year').innerHTML = __counter__;
-        geomap("data/" + __counter__ + ".csv");
-    }
-}
-
-
-function ChangeNext() {
-    __counter__ += 1;
-    if (__counter__ == 2022) {
-        __counter__ -= 1;
-        alert("Maximum dataset is 2022");
-    } else {
-        d3.select("svg").remove();
-        document.getElementById('year').innerHTML = __counter__;
-        geomap("data/" + __counter__ + ".csv");
-    }
-}

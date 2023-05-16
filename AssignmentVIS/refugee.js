@@ -181,12 +181,22 @@ function init ()
                             }
                         })
                         .style("left", (event.pageX + 15) + "px")
-                        .style("top", (event.pageY - 28) + "px");
+                        .style("top", (event.pageY - 28) + "px")
+
+                        d3.select(this)
+                            .transition()
+                            .duration(200)
+                            .style("fill", "red");
                     })
                 .on("mouseout", function (d) {
                     tooltip.transition()
                         .duration(250)
-                        .style("opacity", 0);
+                        .style("opacity", 0)
+                        
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .style("fill", "black");
                 });
     }
 };
