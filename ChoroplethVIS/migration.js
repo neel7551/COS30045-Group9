@@ -9,7 +9,7 @@ function geomap(migrationPopulation) {
     var h = 800;
 
     var projection = d3.geoMercator()
-        .center([100, 5])
+        .center([40, 25])
         .translate([w / 2.5, h / 2])
         .scale(400);
 
