@@ -244,6 +244,7 @@ function init() {
                 d3.select(this)
                     .transition()
                     .duration(200)
+                    .style("opacity", 0.5)
                     .style("fill", "dimgrey");
             });
         
@@ -294,6 +295,7 @@ function init() {
                     d3.select(this)
                         .transition()
                         .duration(200)
+                        .style("opacity", 0.5)
                         .style("fill", "blue");
                 });
 
@@ -343,6 +345,7 @@ function init() {
                     d3.select(this)
                         .transition()
                         .duration(200)
+                        .style("opacity", 0.5)
                         .style("fill", "red");
                 });
     };
