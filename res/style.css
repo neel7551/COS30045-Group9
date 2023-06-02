@@ -75,4 +75,36 @@ button { /* reset zoom button */
     text-align: left;
 }
 
+#population-pyramid {
+    background-color: #f8f8f8;
+  }
+  
+  .bar.male {
+    fill: steelblue;
+  }
+  
+  .bar.female {
+    fill: salmon;
+  }
+  
+  .bar-label {
+    font-size: 12px;
+    text-anchor: middle;
+    fill: #333;
+  }
+  
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #333;
+    shape-rendering: crispEdges;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    text-anchor: middle;
+    fill: #333;
+  }
+
 

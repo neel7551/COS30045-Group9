@@ -27,7 +27,7 @@ function init() {
         .attr("height", h + padding);
 
     // read in data from csv file
-    d3.csv("syrianPopulation.csv", function (d) {
+    d3.csv("data/syrianPopulation.csv", function (d) {
         return {
         date: parseTime(d.year),
         number: +d.number,
@@ -167,8 +167,8 @@ function init() {
 
         // Append legend
         var legend = svg.append("g")
-        .attr("class", "legend")
-        .attr("transform", "translate(" + (padding + 10) + "," + (h - padding - 30) + ")");
+            .attr("class", "legend")
+            .attr("transform", "translate(" + (padding + 10) + "," + (h - padding - 30) + ")");
 
         var legendItem = legend.selectAll(".legend-item")
         .data(legendData)
